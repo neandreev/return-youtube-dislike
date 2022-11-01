@@ -61,7 +61,7 @@ if (isShorts() && mutationObserver.exists !== true) {
     subtree: false,
   };
   mutationObserver.exists = true;
-  mutationObserver.observer = new MutationObserver(function (
+  mutationObserver.observer = new MutationObserver(function(
     mutationList,
     observer
   ) {
@@ -166,9 +166,9 @@ function getLikeCountFromButton() {
       return false;
     }
     let likesStr = getLikeButton()
-    .querySelector("yt-formatted-string#text")
-    .getAttribute("aria-label")
-    .replace(/\D/g, "");
+      .querySelector("yt-formatted-string#text")
+      .getAttribute("aria-label")
+      .replace(/\D/g, "");
     return likesStr.length > 0 ? parseInt(likesStr) : false;
   }
   catch {
@@ -188,7 +188,7 @@ function processResponse(response, storedData) {
   }
   storedData.dislikes = parseInt(response.dislikes);
   storedData.likes = getLikeCountFromButton() || parseInt(response.likes);
-  createRateBar(storedData.likes, storedData.dislikes);
+  // createRateBar(storedData.likes, storedData.dislikes);
   if (extConfig.coloredThumbs === true) {
     if (isShorts()) {
       // for shorts, leave deactived buttons in default color
@@ -232,8 +232,8 @@ async function setState(storedData) {
   storedData.previousState = isVideoDisliked()
     ? DISLIKED_STATE
     : isVideoLiked()
-    ? LIKED_STATE
-    : NEUTRAL_STATE;
+      ? LIKED_STATE
+      : NEUTRAL_STATE;
   let statsSet = false;
 
   let videoId = getVideoId(window.location.href);
